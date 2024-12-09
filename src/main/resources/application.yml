@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: franquicias
+  datasource:
+    url: jdbc:mysql://retoaws202410-dbinstance.cxwgusc0w1bw.us-east-1.rds.amazonaws.com:3306/franquicia_db
+    username: admin
+    password: mnbT3vC5Eh!Z
+    name: retoaws202410-dbinstance
+  jpa:
+    hibernate:
+      ddl-auto: none
+server:
+  port: 8080
