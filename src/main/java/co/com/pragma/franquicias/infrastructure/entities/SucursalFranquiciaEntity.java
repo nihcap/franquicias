@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Table(name = Constants.SUCURSALFRANQUICIA_TABLE_NAME, schema = "franquicia_db", uniqueConstraints = {
         @UniqueConstraint(name = "sucursal_franquicia_unique", columnNames = {"id_franquicia", "id_sucursal"})
 })
-public class SucursalFranquicia implements Serializable {
+public class SucursalFranquiciaEntity implements Serializable {
     @Id
     @Column(name = Constants.SUCURSALFRANQUICIA_COLUMN_ID_NAME, nullable = false)
     private Integer id;
@@ -33,6 +33,6 @@ public class SucursalFranquicia implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_sucursal", nullable = false)
     @ToString.Exclude
-    private Sucursal idSucursal;
+    private SucursalEntity idSucursal;
 
 }
