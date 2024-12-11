@@ -10,8 +10,7 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
-    open-in-view: false
-  webflux:
-    base-path: /franquicias/api/v1
 server:
   port: 8080
+  servlet:
+    context-path: /franquicias/api/v1

@@ -28,7 +28,7 @@ public class FranquiciaController {
         return new ResponseEntity<>(franquicias, HttpStatus.OK);
     }
 
-    @GetMapping("/{nombre}")
+    @GetMapping("/nombre/{nombre:[a-zA-Z]+}")
     public ResponseEntity<Franquicia> getFranquiciaByNombre(@PathVariable String nombre) {
         return franquiciaService.listarFranquiciasPorNombre(nombre)
                 .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
@@ -36,7 +36,7 @@ public class FranquiciaController {
 
     }
 
-    @GetMapping("/{franquiciaId}")
+    @GetMapping("/{franquiciaId:\\d+}")
     public ResponseEntity<Franquicia> getFranquiciaById(@PathVariable Integer franquiciaId) {
         return franquiciaService.listarFranquiciasPorId(franquiciaId)
                 .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
