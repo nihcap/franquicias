@@ -33,13 +33,18 @@ public class FranquiciaService implements CrearFranquiciaUseCase, ListarFranquic
     }
 
     @Override
+    public Optional<Franquicia> listarFranquiciasPorNombre(String nombre) {
+        return listarFranquiciaUseCase.listarFranquiciasPorNombre(nombre);
+    }
+
+    @Override
     public List<Franquicia> listarFranquicias() {
         return listarFranquiciaUseCase.listarFranquicias();
     }
 
     @Override
-    public Optional<Franquicia> modificar(Franquicia franquiciaModificada) {
-        return modificarFranquiciaUseCase.modificar(franquiciaModificada);
+    public Optional<Franquicia> modificarFranquicia(Franquicia franquiciaModificada) {
+        return modificarFranquiciaUseCase.modificarFranquicia(franquiciaModificada);
     }
 
     @Override

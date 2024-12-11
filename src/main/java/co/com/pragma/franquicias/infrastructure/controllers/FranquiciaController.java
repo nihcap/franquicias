@@ -1,54 +1,72 @@
 package co.com.pragma.franquicias.infrastructure.controllers;
 
-import co.com.pragma.franquicias.infrastructure.entities.FranquiciaEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+import co.com.pragma.franquicias.application.services.FranquiciaService;
+import co.com.pragma.franquicias.domain.models.Franquicia;
+import co.com.pragma.franquicias.domain.models.Sucursal;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
+@RequestMapping("/franquicia/api/v1/franquicias")
 public class FranquiciaController {
-//    private final FranquiciaService franquiciaService;
-//
-//    @Autowired
-//    public FranquiciaController(FranquiciaService franquiciaService) {
-//        this.franquiciaService = franquiciaService;
-//    }
-//
-//    @GetMapping("/franquicias")
-//    public ResponseEntity<List<FranquiciaEntity>> getFranquicias(@RequestParam(value = "nombre") String nombre) {
-//        List<FranquiciaEntity> franquiciaEntities;
-//        if (nombre.isEmpty()) {
-//            franquiciaEntities = franquiciaService.findAll();
-//        } else {
-//            franquiciaEntities = franquiciaService.findByNombre(nombre);
-//        }
-//        return ResponseEntity.ok(franquiciaEntities);
-//    }
-//
-//    @GetMapping("/franquicias/{id}")
-//    public ResponseEntity<FranquiciaEntity> getFranquicia(@PathVariable int id) {
-//        FranquiciaEntity franquiciaEntity = franquiciaService.findById(id);
-//        return ResponseEntity.ok(franquiciaEntity);
-//    }
-//
-//    @PostMapping("/franquicias")
-//    public ResponseEntity<FranquiciaEntity> addFranquicia(@RequestBody FranquiciaEntity franquiciaEntity) {
-//        FranquiciaEntity franquiciaEntityCreada = franquiciaService.addFranquicia(franquiciaEntity);
-//        return ResponseEntity.ok(franquiciaEntityCreada);
-//    }
-//
-//    @PutMapping("/franquicias/{id}")
-//    public ResponseEntity<FranquiciaEntity> modifyFranquicia(@PathVariable int id, @RequestBody FranquiciaEntity franquiciaEntity) {
-//        FranquiciaEntity franquiciaEntityModificada = franquiciaService.modifyFranquicia(id, franquiciaEntity);
-//        return ResponseEntity.ok(franquiciaEntityModificada);
-//    }
-//
-//    @DeleteMapping("/franquicias/{id}")
-//    public ResponseEntity<Void> deleteFranquicia(@PathVariable int id) {
-//        franquiciaService.deleteFranquicia(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    private final FranquiciaService franquiciaService;
+
+    @PostMapping()
+    public ResponseEntity<Franquicia> createFranquicia(@RequestBody Franquicia franquicia) {
+        Franquicia franquiciaCreada = franquiciaService.crearFranquicia(franquicia);
+        return new ResponseEntity<>(franquiciaCreada, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Franquicia>> getAllFranquicias() {
+        List<Franquicia> franquicias = franquiciaService.listarFranquicias();
+        return new ResponseEntity<>(franquicias, HttpStatus.OK);
+    }
+
+    @GetMapping()
+    public ResponseEntity<Franquicia> getFranquiciaByNombre(@RequestParam(value = "nombre") String nombre) {
+        return franquiciaService.listarFranquiciasPorNombre(nombre)
+                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+    }
+
+    @GetMapping("/{franquiciaId}")
+    public ResponseEntity<Franquicia> getFranquiciaById(@PathVariable Integer franquiciaId) {
+        return franquiciaService.listarFranquiciasPorId(franquiciaId)
+                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/{franquiciaId}")
+    public ResponseEntity<Franquicia> modifyFranquicia(@PathVariable Integer franquiciaId, @RequestBody Franquicia modifiedFranquicia) {
+        return franquiciaService.modificarFranquicia(modifiedFranquicia)
+                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/{franquiciaId}")
+    public ResponseEntity<Void> deleteFranquicia(@PathVariable Integer franquiciaId) {
+        if (franquiciaService.eliminarFranquiciaPorId(franquiciaId)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/{franquiciaId}/sucursales")
+    public ResponseEntity<List<Sucursal>> listarSucursalesDeFranquicia(){
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    @PostMapping("/{franquiciaId}/sucursales")
+    public ResponseEntity<Sucursal> crearSucursalDeFranquicia(@PathVariable Integer franquiciaId, @RequestBody Sucursal sucursal){
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
 
 }

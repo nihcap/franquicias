@@ -4,12 +4,14 @@ import co.com.pragma.franquicias.domain.models.Franquicia;
 import co.com.pragma.franquicias.domain.ports.out.FranquiciaRepositoryPort;
 import co.com.pragma.franquicias.infrastructure.entities.FranquiciaEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@Component
 public class JpaFranquiciaRepositoryAdapter implements FranquiciaRepositoryPort {
     private final JpaFranquiciaRepository jpaFranquiciaRepository;
 
@@ -23,6 +25,11 @@ public class JpaFranquiciaRepositoryAdapter implements FranquiciaRepositoryPort 
     @Override
     public Optional<Franquicia> findById(Integer id) {
         return jpaFranquiciaRepository.findById(id).map(FranquiciaEntity::toDomainModel);
+    }
+
+    @Override
+    public Optional<Franquicia> findByNombre(String nombre) {
+        return jpaFranquiciaRepository.findByNombre(nombre).map(FranquiciaEntity::toDomainModel);
     }
 
     @Override

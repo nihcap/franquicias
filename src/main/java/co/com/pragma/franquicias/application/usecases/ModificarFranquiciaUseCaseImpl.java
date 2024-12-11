@@ -14,7 +14,7 @@ public class ModificarFranquiciaUseCaseImpl implements ModificarFranquiciaUseCas
     }
 
     @Override
-    public Optional<Franquicia> modificar(Franquicia franquiciaModificada) {
+    public Optional<Franquicia> modificarFranquicia(Franquicia franquiciaModificada) {
         return franquiciaRepositoryPort.update(franquiciaModificada);
     }
 }

@@ -20,6 +20,11 @@ public class ListarFranquiciaUseCaseImpl implements ListarFranquiciaUseCase {
     }
 
     @Override
+    public Optional<Franquicia> listarFranquiciasPorNombre(String nombre) {
+        return franquiciaRepositoryPort.findByNombre(nombre);
+    }
+
+    @Override
     public List<Franquicia> listarFranquicias() {
         return franquiciaRepositoryPort.findAll();
     }

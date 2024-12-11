@@ -4,12 +4,14 @@ import co.com.pragma.franquicias.domain.models.Producto;
 import co.com.pragma.franquicias.domain.ports.out.ProductoRepositoryPort;
 import co.com.pragma.franquicias.infrastructure.entities.ProductoEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@Component
 public class JpaProductoRepositoryAdapter implements ProductoRepositoryPort {
     private final JpaProductoRepository jpaProductoRepository;
 

@@ -10,6 +10,8 @@ public interface FranquiciaRepositoryPort {
 
     Optional<Franquicia> findById(Integer id);
 
+    Optional<Franquicia> findByNombre(String nombre);
+
     Optional<Franquicia> update(Franquicia franquicia);
 
     List<Franquicia> findAll();

@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface ListarFranquiciaUseCase {
     Optional<Franquicia> listarFranquiciasPorId(Integer id);
+    Optional<Franquicia> listarFranquiciasPorNombre(String nombre);
     List<Franquicia> listarFranquicias();
 }
