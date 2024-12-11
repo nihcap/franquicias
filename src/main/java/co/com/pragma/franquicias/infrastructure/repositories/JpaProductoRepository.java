@@ -1,9 +1,9 @@
 package co.com.pragma.franquicias.infrastructure.repositories;
 
-import co.com.pragma.franquicias.infrastructure.entities.Producto;
-import org.springframework.data.repository.CrudRepository;
+import co.com.pragma.franquicias.infrastructure.entities.ProductoEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface JpaProductoRepository extends CrudRepository<Producto, Integer> {
+public interface JpaProductoRepository extends JpaRepository<ProductoEntity, Integer> {
 }

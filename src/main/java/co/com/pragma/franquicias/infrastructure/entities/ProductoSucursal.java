@@ -31,7 +31,7 @@ public class ProductoSucursal implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_producto", nullable = false)
-    private Producto idProducto;
+    private ProductoEntity idProducto;
 
     @Column(name = Constants.PRODUCTOSUCURSAL_COLUMN_CANTIDADSTOCK_NAME, nullable = false)
     private Long cantidadStock;
