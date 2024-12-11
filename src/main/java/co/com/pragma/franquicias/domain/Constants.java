@@ -2,6 +2,7 @@ package co.com.pragma.franquicias.domain;
 
 public class Constants{
 
+    public static final String SCHEMA_NAME = "franquicia_db";
     public static final String FRANQUICIA_TABLE_NAME = "franquicia";
     public static final String FRANQUICIA_COLUMN_ID_NAME = "id";
     public static final String FRANQUICIA_COLUMN_NOMBRE_NAME = "nombre";

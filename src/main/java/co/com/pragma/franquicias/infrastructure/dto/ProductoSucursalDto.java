@@ -2,13 +2,8 @@ package co.com.pragma.franquicias.infrastructure.dto;
 
 import lombok.Value;
 
-import java.io.Serializable;
-
-/**
- * DTO for {@link co.com.pragma.franquicias.domain.model.ProductoSucursal}
- */
 @Value
-public class ProductoSucursalDto implements Serializable {
+public class ProductoSucursalDto {
     Integer id;
     SucursalFranquiciaDto sucursalFranquicia;
     ProductoDto producto;

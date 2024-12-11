@@ -1,4 +1,4 @@
-create table if not exists franquicia_db.franquicia
+create table if not exists franquicia_db.franquiciaEntity
 (
     id     mediumint auto_increment
         primary key,
@@ -28,13 +28,13 @@ create table if not exists franquicia_db.sucursal_franquicia
     constraint sucursal_franquicia_unique
         unique (id_franquicia, id_sucursal),
     constraint sucursal_franquicia_franquicia_FK
-        foreign key (id_franquicia) references franquicia_db.franquicia (id)
+        foreign key (id_franquicia) references franquicia_db.franquiciaEntity (id)
             on update cascade on delete cascade,
     constraint sucursal_franquicia_sucursal_FK
         foreign key (id_sucursal) references franquicia_db.sucursal (id)
             on update cascade on delete cascade
 )
-    comment 'Sucursales por Franquicia';
+    comment 'Sucursales por FranquiciaEntity';
 
 create table if not exists franquicia_db.producto_sucursal
 (
