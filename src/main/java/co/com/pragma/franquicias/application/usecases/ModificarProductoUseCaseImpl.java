@@ -14,7 +14,7 @@ public class ModificarProductoUseCaseImpl implements ModificarProductoUseCase {
     }
 
     @Override
-    public Optional<Producto> modificar(Producto productoModificado) {
+    public Optional<Producto> modificarProducto(Producto productoModificado) {
         return productoRepositoryPort.update(productoModificado);
     }
 }

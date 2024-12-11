@@ -1,6 +1,5 @@
 package co.com.pragma.franquicias.infrastructure.repositories;
 
-import co.com.pragma.franquicias.domain.models.Franquicia;
 import co.com.pragma.franquicias.domain.models.Sucursal;
 import co.com.pragma.franquicias.domain.ports.out.SucursalRepositoryPort;
 import co.com.pragma.franquicias.infrastructure.entities.SucursalEntity;
@@ -28,12 +27,12 @@ public class JpaSucursalRepositoryAdapter implements SucursalRepositoryPort {
         return jpaSucursalRepository.findById(id).map(SucursalEntity::toDomainModel);
     }
 
-    @Override
-    public List<Sucursal> findByFranquicia(Franquicia franquicia) {
-        return jpaSucursalRepository.findByFranquicia(franquicia).stream()
-                .map(SucursalEntity::toDomainModel)
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<Sucursal> findByFranquicia(Franquicia franquicia) {
+//        return jpaSucursalRepository.findByFranquicia(franquicia).stream()
+//                .map(SucursalEntity::toDomainModel)
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public List<Sucursal> findAll() {

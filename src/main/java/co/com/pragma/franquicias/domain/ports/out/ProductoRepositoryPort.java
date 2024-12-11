@@ -10,6 +10,8 @@ public interface ProductoRepositoryPort {
 
     Optional<Producto> findById(Integer id);
 
+    Optional<Producto> findByNombre(String nombre);
+
     Optional<Producto> update(Producto producto);
 
     List<Producto> findAll();

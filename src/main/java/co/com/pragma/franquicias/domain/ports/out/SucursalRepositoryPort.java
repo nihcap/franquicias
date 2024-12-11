@@ -1,6 +1,5 @@
 package co.com.pragma.franquicias.domain.ports.out;
 
-import co.com.pragma.franquicias.domain.models.Franquicia;
 import co.com.pragma.franquicias.domain.models.Sucursal;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public interface SucursalRepositoryPort {
 
     Optional<Sucursal> findById(Integer id);
 
-    List<Sucursal> findByFranquicia(Franquicia franquicia);
+//    List<Sucursal> findByFranquicia(Franquicia franquicia);
 
     Optional<Sucursal> update(Sucursal sucursal);
 

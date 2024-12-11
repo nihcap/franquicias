@@ -5,5 +5,5 @@ import co.com.pragma.franquicias.domain.models.Producto;
 import java.util.Optional;
 
 public interface ModificarProductoUseCase {
-    Optional<Producto> modificar(Producto productoModificado);
+    Optional<Producto> modificarProducto(Producto productoModificado);
 }

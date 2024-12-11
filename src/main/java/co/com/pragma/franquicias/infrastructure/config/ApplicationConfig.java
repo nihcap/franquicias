@@ -1,14 +1,15 @@
 package co.com.pragma.franquicias.infrastructure.config;
 
 import co.com.pragma.franquicias.application.services.FranquiciaService;
-import co.com.pragma.franquicias.application.usecases.CrearFranquiciaUseCaseImpl;
-import co.com.pragma.franquicias.application.usecases.EliminarFranquiciaUseCaseImpl;
-import co.com.pragma.franquicias.application.usecases.ListarFranquiciaUseCaseImpl;
-import co.com.pragma.franquicias.application.usecases.ModificarFranquiciaUseCaseImpl;
-import co.com.pragma.franquicias.domain.ports.out.ExternalServicePort;
+import co.com.pragma.franquicias.application.services.ProductoService;
+import co.com.pragma.franquicias.application.services.SucursalService;
+import co.com.pragma.franquicias.application.usecases.*;
 import co.com.pragma.franquicias.domain.ports.out.FranquiciaRepositoryPort;
-import co.com.pragma.franquicias.infrastructure.adapters.ExternalServiceAdapter;
+import co.com.pragma.franquicias.domain.ports.out.ProductoRepositoryPort;
+import co.com.pragma.franquicias.domain.ports.out.SucursalRepositoryPort;
 import co.com.pragma.franquicias.infrastructure.repositories.JpaFranquiciaRepositoryAdapter;
+import co.com.pragma.franquicias.infrastructure.repositories.JpaProductoRepositoryAdapter;
+import co.com.pragma.franquicias.infrastructure.repositories.JpaSucursalRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,12 +26,38 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public ProductoService productoService(ProductoRepositoryPort productoRepositoryPort){
+        return new ProductoService(
+                new CrearProductoUseCaseImpl(productoRepositoryPort),
+                new ListarProductoUseCaseImpl(productoRepositoryPort),
+                new ModificarProductoUseCaseImpl(productoRepositoryPort),
+                new EliminarProductoUseCaseImpl(productoRepositoryPort)
+        );
+    }
+
+    @Bean
+    public SucursalService sucursalService(SucursalRepositoryPort sucursalRepositoryPort){
+        return new SucursalService(
+                new CrearSucursalUseCaseImpl(sucursalRepositoryPort),
+                new ListarSucursalUseCaseImpl(sucursalRepositoryPort),
+                new ModificarSucursalUseCaseImpl(sucursalRepositoryPort),
+                new EliminarSucursalUseCaseImpl(sucursalRepositoryPort)
+        );
+    }
+
+    @Bean
     public FranquiciaRepositoryPort franquiciaRepositoryPort(JpaFranquiciaRepositoryAdapter jpaFranquiciaRepositoryAdapter) {
         return jpaFranquiciaRepositoryAdapter;
     }
 
     @Bean
-    public ExternalServicePort externalServicePort(){
-        return new ExternalServiceAdapter();
+    public ProductoRepositoryPort productoRepositoryPort(JpaProductoRepositoryAdapter jpaProductoRepositoryAdapter) {
+        return jpaProductoRepositoryAdapter;
     }
+
+    @Bean
+    public SucursalRepositoryPort sucursalRepositoryPort(JpaSucursalRepositoryAdapter jpaSucursalRepositoryAdapter) {
+        return jpaSucursalRepositoryAdapter;
+    }
+
 }

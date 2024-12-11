@@ -1,6 +1,5 @@
 package co.com.pragma.franquicias.application.services;
 
-import co.com.pragma.franquicias.domain.models.Franquicia;
 import co.com.pragma.franquicias.domain.models.Sucursal;
 import co.com.pragma.franquicias.domain.ports.in.CrearSucursalUseCase;
 import co.com.pragma.franquicias.domain.ports.in.EliminarSucursalUseCase;
@@ -31,11 +30,11 @@ public class SucursalService implements CrearSucursalUseCase, ListarSucursalUseC
     public Optional<Sucursal> listarSucursalesPorId(Integer id) {
         return listarSucursalUseCase.listarSucursalesPorId(id);
     }
-
-    @Override
-    public List<Sucursal> listarSucursalesPorFranquicia(Franquicia franquicia) {
-        return listarSucursalUseCase.listarSucursalesPorFranquicia(franquicia);
-    }
+//
+//    @Override
+//    public List<Sucursal> listarSucursalesPorFranquicia(Franquicia franquicia) {
+//        return listarSucursalUseCase.listarSucursalesPorFranquicia(franquicia);
+//    }
 
     @Override
     public List<Sucursal> listarSucursales() {

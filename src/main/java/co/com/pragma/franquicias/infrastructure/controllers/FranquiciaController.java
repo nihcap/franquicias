@@ -12,7 +12,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/franquicia/api/v1/franquicias")
+@RequestMapping("/franquicias")
 public class FranquiciaController {
     private final FranquiciaService franquiciaService;
 
@@ -28,8 +28,8 @@ public class FranquiciaController {
         return new ResponseEntity<>(franquicias, HttpStatus.OK);
     }
 
-    @GetMapping()
-    public ResponseEntity<Franquicia> getFranquiciaByNombre(@RequestParam(value = "nombre") String nombre) {
+    @GetMapping("/{nombre}")
+    public ResponseEntity<Franquicia> getFranquiciaByNombre(@PathVariable String nombre) {
         return franquiciaService.listarFranquiciasPorNombre(nombre)
                 .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -60,12 +60,12 @@ public class FranquiciaController {
     }
 
     @GetMapping("/{franquiciaId}/sucursales")
-    public ResponseEntity<List<Sucursal>> listarSucursalesDeFranquicia(){
+    public ResponseEntity<List<Sucursal>> listarSucursalesDeFranquicia() {//TODO: IMPLEMENTAR
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     @PostMapping("/{franquiciaId}/sucursales")
-    public ResponseEntity<Sucursal> crearSucursalDeFranquicia(@PathVariable Integer franquiciaId, @RequestBody Sucursal sucursal){
+    public ResponseEntity<Sucursal> crearSucursalDeFranquicia(@PathVariable Integer franquiciaId, @RequestBody Sucursal sucursal) {//TODO: IMPLEMENTAR
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

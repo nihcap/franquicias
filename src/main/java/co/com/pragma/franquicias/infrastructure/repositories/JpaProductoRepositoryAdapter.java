@@ -28,6 +28,11 @@ public class JpaProductoRepositoryAdapter implements ProductoRepositoryPort {
     }
 
     @Override
+    public Optional<Producto> findByNombre(String nombre) {
+        return jpaProductoRepository.findByNombre(nombre).map(ProductoEntity::toDomainModel);
+    }
+
+    @Override
     public List<Producto> findAll() {
         return jpaProductoRepository.findAll().stream()
                 .map(ProductoEntity::toDomainModel)
