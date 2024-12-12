@@ -2,10 +2,7 @@ package co.com.pragma.franquicias.infrastructure.entities;
 
 import co.com.pragma.franquicias.domain.Constants;
 import co.com.pragma.franquicias.domain.models.Producto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -20,6 +17,7 @@ import java.io.Serializable;
 @Table(name = Constants.PRODUCTO_TABLE_NAME, schema = Constants.SCHEMA_NAME)
 public class ProductoEntity implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = Constants.PRODUCTO_COLUMN_ID_NAME, nullable = false)
     private Integer id;
 
