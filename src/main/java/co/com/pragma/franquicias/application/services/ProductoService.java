@@ -42,12 +42,13 @@ public class ProductoService implements CrearProductoUseCase, ListarProductoUseC
     }
 
     @Override
+    public Optional<Producto> modificarProducto(Producto productoModificado) {
+        return modificarProductoUseCase.modificarProducto(productoModificado);
+    }
+
+    @Override
     public boolean eliminarProductoPorId(Integer id) {
         return eliminarProductoUseCase.eliminarProductoPorId(id);
     }
 
-    @Override
-    public Optional<Producto> modificarProducto(Producto productoModificado) {
-        return modificarProductoUseCase.modificarProducto(productoModificado);
-    }
 }

@@ -47,8 +47,8 @@ public class SucursalService implements CrearSucursalUseCase, ListarSucursalUseC
 //    }
 
     @Override
-    public Optional<Sucursal> modificar(Sucursal sucursalModificado) {
-        return modificarSucursalUseCase.modificar(sucursalModificado);
+    public Optional<Sucursal> modificarSucursal(Sucursal sucursalModificada) {
+        return modificarSucursalUseCase.modificarSucursal(sucursalModificada);
     }
 
     @Override

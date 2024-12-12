@@ -14,7 +14,7 @@ public class ModificarSucursalUseCaseImpl implements ModificarSucursalUseCase {
     }
 
     @Override
-    public Optional<Sucursal> modificar(Sucursal sucursalModificado) {
+    public Optional<Sucursal> modificarSucursal(Sucursal sucursalModificado) {
         return sucursalRepositoryPort.update(sucursalModificado);
     }
 }

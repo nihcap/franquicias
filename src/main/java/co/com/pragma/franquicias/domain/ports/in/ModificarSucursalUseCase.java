@@ -5,5 +5,5 @@ import co.com.pragma.franquicias.domain.models.Sucursal;
 import java.util.Optional;
 
 public interface ModificarSucursalUseCase {
-    Optional<Sucursal> modificar(Sucursal sucursalModificado);
+    Optional<Sucursal> modificarSucursal(Sucursal sucursalModificado);
 }

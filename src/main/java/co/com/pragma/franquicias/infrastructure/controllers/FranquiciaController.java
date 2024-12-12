@@ -18,21 +18,14 @@ public class FranquiciaController {
 
     @PostMapping()
     public ResponseEntity<Franquicia> createFranquicia(@RequestBody Franquicia franquicia) {
-        Franquicia franquiciaCreada = franquiciaService.crearFranquicia(franquicia);
-        return new ResponseEntity<>(franquiciaCreada, HttpStatus.CREATED);
+        Franquicia franquiciaNueva = franquiciaService.crearFranquicia(franquicia);
+        return new ResponseEntity<>(franquiciaNueva, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<Franquicia>> getAllFranquicias() {
         List<Franquicia> franquicias = franquiciaService.listarFranquicias();
         return new ResponseEntity<>(franquicias, HttpStatus.OK);
-    }
-
-    @GetMapping("/nombre/{nombreFranquicia}")
-    public ResponseEntity<Franquicia> getFranquiciaByNombre(@PathVariable String nombreFranquicia) {
-        return franquiciaService.listarFranquiciasPorNombre(nombreFranquicia)
-                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/{idFranquicia}")
@@ -42,9 +35,16 @@ public class FranquiciaController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/nombre/{nombreFranquicia}")
+    public ResponseEntity<Franquicia> getFranquiciaByNombre(@PathVariable String nombreFranquicia) {
+        return franquiciaService.listarFranquiciasPorNombre(nombreFranquicia)
+                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @PutMapping("/{idFranquicia}")
-    public ResponseEntity<Franquicia> modifyFranquicia(@PathVariable Integer idFranquicia, @RequestBody Franquicia modifiedFranquicia) {
-        return franquiciaService.modificarFranquicia(modifiedFranquicia)
+    public ResponseEntity<Franquicia> modifyFranquicia(@PathVariable Integer idFranquicia, @RequestBody Franquicia franquiciaModificada) {
+        return franquiciaService.modificarFranquicia(franquiciaModificada)
                 .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
