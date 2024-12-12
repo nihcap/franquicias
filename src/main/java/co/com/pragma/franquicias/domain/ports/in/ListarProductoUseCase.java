@@ -7,5 +7,8 @@ import java.util.Optional;
 
 public interface ListarProductoUseCase {
     Optional<Producto> listarProductosPorId(Integer id);
+
+    Optional<Producto> listarProductosPorNombre(String nombre);
+
     List<Producto> listarProductos();
 }

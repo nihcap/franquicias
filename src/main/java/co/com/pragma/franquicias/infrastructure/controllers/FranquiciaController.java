@@ -28,44 +28,43 @@ public class FranquiciaController {
         return new ResponseEntity<>(franquicias, HttpStatus.OK);
     }
 
-    @GetMapping("/nombre/{nombre:[a-zA-Z]+}")
-    public ResponseEntity<Franquicia> getFranquiciaByNombre(@PathVariable String nombre) {
-        return franquiciaService.listarFranquiciasPorNombre(nombre)
-                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
-    }
-
-    @GetMapping("/{franquiciaId:\\d+}")
-    public ResponseEntity<Franquicia> getFranquiciaById(@PathVariable Integer franquiciaId) {
-        return franquiciaService.listarFranquiciasPorId(franquiciaId)
+    @GetMapping("/nombre/{nombreFranquicia}")
+    public ResponseEntity<Franquicia> getFranquiciaByNombre(@PathVariable String nombreFranquicia) {
+        return franquiciaService.listarFranquiciasPorNombre(nombreFranquicia)
                 .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PutMapping("/{franquiciaId}")
-    public ResponseEntity<Franquicia> modifyFranquicia(@PathVariable Integer franquiciaId, @RequestBody Franquicia modifiedFranquicia) {
+    @GetMapping("/{idFranquicia}")
+    public ResponseEntity<Franquicia> getFranquiciaById(@PathVariable Integer idFranquicia) {
+        return franquiciaService.listarFranquiciasPorId(idFranquicia)
+                .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/{idFranquicia}")
+    public ResponseEntity<Franquicia> modifyFranquicia(@PathVariable Integer idFranquicia, @RequestBody Franquicia modifiedFranquicia) {
         return franquiciaService.modificarFranquicia(modifiedFranquicia)
                 .map(franquicia -> new ResponseEntity<>(franquicia, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/{franquiciaId}")
-    public ResponseEntity<Void> deleteFranquicia(@PathVariable Integer franquiciaId) {
-        if (franquiciaService.eliminarFranquiciaPorId(franquiciaId)) {
+    @DeleteMapping("/{idFranquicia}")
+    public ResponseEntity<Void> deleteFranquicia(@PathVariable Integer idFranquicia) {
+        if (franquiciaService.eliminarFranquiciaPorId(idFranquicia)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{franquiciaId}/sucursales")
+    @GetMapping("/{idFranquicia}/sucursales")
     public ResponseEntity<List<Sucursal>> listarSucursalesDeFranquicia() {//TODO: IMPLEMENTAR
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    @PostMapping("/{franquiciaId}/sucursales")
-    public ResponseEntity<Sucursal> crearSucursalDeFranquicia(@PathVariable Integer franquiciaId, @RequestBody Sucursal sucursal) {//TODO: IMPLEMENTAR
+    @PostMapping("/{idFranquicia}/sucursales")
+    public ResponseEntity<Sucursal> crearSucursalDeFranquicia(@PathVariable Integer idFranquicia, @RequestBody Sucursal sucursal) {//TODO: IMPLEMENTAR
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 

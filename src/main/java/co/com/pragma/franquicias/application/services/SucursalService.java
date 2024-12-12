@@ -23,12 +23,22 @@ public class SucursalService implements CrearSucursalUseCase, ListarSucursalUseC
 
     @Override
     public Sucursal crearSucursal(Sucursal sucursal) {
-        return crearSucursalUseCase.crearSucursal( sucursal);
+        return crearSucursalUseCase.crearSucursal(sucursal);
+    }
+
+    @Override
+    public List<Sucursal> listarSucursales() {
+        return listarSucursalUseCase.listarSucursales();
     }
 
     @Override
     public Optional<Sucursal> listarSucursalesPorId(Integer id) {
         return listarSucursalUseCase.listarSucursalesPorId(id);
+    }
+
+    @Override
+    public Optional<Sucursal> listarSucursalesPorNombre(String nombre) {
+        return listarSucursalUseCase.listarSucursalesPorNombre(nombre);
     }
 //
 //    @Override
@@ -37,13 +47,8 @@ public class SucursalService implements CrearSucursalUseCase, ListarSucursalUseC
 //    }
 
     @Override
-    public List<Sucursal> listarSucursales() {
-        return listarSucursalUseCase.listarSucursales();
-    }
-
-    @Override
     public Optional<Sucursal> modificar(Sucursal sucursalModificado) {
-        return modificarSucursalUseCase.modificar( sucursalModificado);
+        return modificarSucursalUseCase.modificar(sucursalModificado);
     }
 
     @Override

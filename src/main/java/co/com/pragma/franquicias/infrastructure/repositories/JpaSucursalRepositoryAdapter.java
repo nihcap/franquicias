@@ -27,6 +27,11 @@ public class JpaSucursalRepositoryAdapter implements SucursalRepositoryPort {
         return jpaSucursalRepository.findById(id).map(SucursalEntity::toDomainModel);
     }
 
+    @Override
+    public Optional<Sucursal> findByNombre(String nombre) {
+        return jpaSucursalRepository.findByNombre(nombre).map(SucursalEntity::toDomainModel);
+    }
+
 //    @Override
 //    public List<Sucursal> findByFranquicia(Franquicia franquicia) {
 //        return jpaSucursalRepository.findByFranquicia(franquicia).stream()

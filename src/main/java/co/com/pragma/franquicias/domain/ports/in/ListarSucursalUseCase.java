@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface ListarSucursalUseCase {
     Optional<Sucursal> listarSucursalesPorId(Integer id);
 
+    Optional<Sucursal> listarSucursalesPorNombre(String nombre);
+
 //    List<Sucursal> listarSucursalesPorFranquicia(Franquicia franquicia);
 
     List<Sucursal> listarSucursales();

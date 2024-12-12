@@ -32,6 +32,11 @@ public class ProductoService implements CrearProductoUseCase, ListarProductoUseC
     }
 
     @Override
+    public Optional<Producto> listarProductosPorNombre(String nombre) {
+        return listarProductoUseCase.listarProductosPorNombre(nombre);
+    }
+
+    @Override
     public List<Producto> listarProductos() {
         return listarProductoUseCase.listarProductos();
     }

@@ -12,6 +12,8 @@ public interface SucursalRepositoryPort {
 
     Optional<Sucursal> findById(Integer id);
 
+    Optional<Sucursal> findByNombre(String nombre);
+
 //    List<Sucursal> findByFranquicia(Franquicia franquicia);
 
     Optional<Sucursal> update(Sucursal sucursal);

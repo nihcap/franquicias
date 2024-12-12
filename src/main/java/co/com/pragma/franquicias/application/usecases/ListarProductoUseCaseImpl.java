@@ -20,6 +20,11 @@ public class ListarProductoUseCaseImpl implements ListarProductoUseCase {
     }
 
     @Override
+    public Optional<Producto> listarProductosPorNombre(String nombre) {
+        return productoRepositoryPort.findByNombre(nombre);
+    }
+
+    @Override
     public List<Producto> listarProductos() {
         return productoRepositoryPort.findAll();
     }

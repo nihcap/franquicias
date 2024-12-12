@@ -19,6 +19,11 @@ public class ListarSucursalUseCaseImpl implements ListarSucursalUseCase {
         return sucursalRepositoryPort.findById(id);
     }
 
+    @Override
+    public Optional<Sucursal> listarSucursalesPorNombre(String nombre) {
+        return sucursalRepositoryPort.findByNombre(nombre);
+    }
+
 //    @Override
 //    public List<Sucursal> listarSucursalesPorFranquicia(Franquicia franquicia) {
 //        return sucursalRepositoryPort.findByFranquicia(franquicia);
